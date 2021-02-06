@@ -59,9 +59,7 @@ mainMenu = () => {
                 break;
             case "Update Employee Role":
                 updateRole();
-
-            // case //type in all the choices and call backs and breaks
-
+                break;
             default:
                 connection.end;
                 break;
