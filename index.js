@@ -27,37 +27,37 @@ mainMenu = () => {
             name: "mainMenu",
             message: "What would you like to do?",
             choices: [
-            "View Departments",
-            "View Employees",
-            "View Employee Roles",
-            "Add Department",
-            "Add Employee Role",
-            "Add Employee",
-            "Update Employee Role",
+            "View All Departments",
+            "View All Roles",
+            "View All Employees",
+            "Add A Department",
+            "Add A Role",
+            "Add An Employee",
+            "Update An Employee Role",
             ]
         }
     )
     .then(answers => {
         switch (answers.mainMenu) {
-            case "View Departments":
+            case "View All Departments":
                 viewDepartments();
                 break;
-            case "View Employees":
-                viewEmployees();
-                break;
-            case "View Employee Roles":
+            case "View All Roles":
                 viewRole();
                 break;
-            case "Add Department":
+            case "View All Employees":
+                viewEmployees();
+                break;
+            case "Add A Department":
                 addDepartment();
                 break;
-            case "Add Employee Role":
+            case "Add A Role":
                 addRole();
                 break;
-            case "Add Employee":
+            case "Add An Employee":
                 addEmployee();
                 break;
-            case "Update Employee Role":
+            case "Update An Employee Role":
                 updateRole();
                 break;
             default:
