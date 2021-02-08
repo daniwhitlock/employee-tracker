@@ -27,6 +27,7 @@ mainMenu = () => {
             name: "mainMenu",
             message: "What would you like to do?",
             choices: [
+                "End Query Connection",
                 "View All Departments",
                 "View All Roles",
                 "View All Employees",
@@ -39,6 +40,9 @@ mainMenu = () => {
     )
         .then(answers => {
             switch (answers.mainMenu) {
+                case "End Query Connection":
+                    connection.end;
+                    break;
                 case "View All Departments":
                     viewDepartments();
                     break;
@@ -59,7 +63,7 @@ mainMenu = () => {
                     break;
                 case "Update An Employee Role":
                     updateEmployeeRole();
-                    break;
+                    break;    
                 default:
                     connection.end;
                     break;
@@ -91,7 +95,11 @@ viewRole = () => {
 
 viewEmployees = () => {
     connection.query(
-        "SELECT * FROM employee",
+        // "SELECT * FROM employee INNER JOIN role ON employee.role_id = role.title",
+        `SELECT first_name, last_name, title, name, salary, manager_id
+        FROM employee
+        INNER JOIN role ON employee.role_id = role.id
+        INNER JOIN department ON role.department_id = department.id`,
         function (err, res) {
             if (err) throw err;
             console.table(res);
@@ -219,7 +227,6 @@ getManagerNamesForAddEmployee = (roleChoices) => {
             
             addEmployeePrompt(roleChoices, managerChoices);
         }
-        
     )
 }
 
